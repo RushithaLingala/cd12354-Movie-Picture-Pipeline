@@ -1,6 +1,9 @@
 name: Backend Continuous Integration
 
 on:
+ push:
+ branches:
+   - main
   pull_request:
     branches:
       - main
@@ -9,7 +12,10 @@ on:
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on:
+ push:
+ branches:
+   - main ubuntu-latest
     defaults:
       run:
         working-directory: ./starter/backend
@@ -20,7 +26,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version:
+ push:
+ branches:
+   - main '3.10'
 
       - name: Install pipenv
         run: pip install pipenv
@@ -33,7 +42,10 @@ jobs:
 
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on:
+ push:
+ branches:
+   - main ubuntu-latest
     defaults:
       run:
         working-directory: ./starter/backend
@@ -44,7 +56,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version:
+ push:
+ branches:
+   - main '3.10'
 
       - name: Install pipenv
         run: pip install pipenv
@@ -57,7 +72,10 @@ jobs:
 
   build:
     name: Build Docker Image
-    runs-on: ubuntu-latest
+    runs-on:
+ push:
+ branches:
+   - main ubuntu-latest
     needs: [lint, test]
     defaults:
       run:
@@ -69,7 +87,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version:
+ push:
+ branches:
+   - main '3.10'
 
       - name: Install pipenv
         run: pip install pipenv

@@ -1,6 +1,9 @@
 name: Frontend Continuous Integration
 
 on:
+ push:
+ branches:
+   - main
   pull_request:
     branches:
       - main
@@ -9,7 +12,10 @@ on:
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on:
+ push:
+ branches:
+   - main ubuntu-latest
     defaults:
       run:
         working-directory: ./starter/frontend
@@ -20,7 +26,10 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version:
+ push:
+ branches:
+   - main '18'
 
       - name: Cache dependencies
         uses: actions/cache@v3
@@ -38,7 +47,10 @@ jobs:
 
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on:
+ push:
+ branches:
+   - main ubuntu-latest
     defaults:
       run:
         working-directory: ./starter/frontend
@@ -49,7 +61,10 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version:
+ push:
+ branches:
+   - main '18'
 
       - name: Cache dependencies
         uses: actions/cache@v3
@@ -67,7 +82,10 @@ jobs:
 
   build:
     name: Build Docker Image
-    runs-on: ubuntu-latest
+    runs-on:
+ push:
+ branches:
+   - main ubuntu-latest
     needs: [lint, test]
     defaults:
       run:
@@ -79,7 +97,10 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version:
+ push:
+ branches:
+   - main '18'
 
       - name: Cache dependencies
         uses: actions/cache@v3
