@@ -1,5 +1,5 @@
-# 1. Overwrite backend-ci.yaml with correct syntax
-cat << 'EOF' > .github/workflows/backend-ci.yaml
+# 1. Re-create backend-ci.yaml cleanly
+cat > .github/workflows/backend-ci.yaml << 'EOF'
 name: Backend Continuous Integration
 
 on:
@@ -86,8 +86,8 @@ jobs:
         run: docker build -t mp-backend:latest .
 EOF
 
-# 2. Overwrite frontend-ci.yaml with correct syntax
-cat << 'EOF' > .github/workflows/frontend-ci.yaml
+# 2. Re-create frontend-ci.yaml cleanly
+cat > .github/workflows/frontend-ci.yaml << 'EOF'
 name: Frontend Continuous Integration
 
 on:
@@ -164,8 +164,3 @@ jobs:
       - name: Build with Docker
         run: docker build -t mp-frontend:latest .
 EOF
-
-# 3. Commit and push the fix
-git add .github/workflows/
-git commit -m "Fix YAML syntax for CI workflows"
-git push origin main
